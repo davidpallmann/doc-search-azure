@@ -15,15 +15,15 @@ In order to deploy this solution to the cloud, you will need to define the follo
 
 The solution files will need updating to refer to YOUR cloud assets.
 
-# Building
+# Building and Deploying
 
-To build doc-search-azure, you need:
+To build and deploy doc-search-azure, you need:
 * Visual Studio 2017
 * An Azure account
 
-Before building, update the local.settings.json file with your storage account settings.
+Before building, update the local.settings.json file with your storage account settings. 
 
-Publish the search project to your Azure Function app in the cloud.
+Publish the search project to your Azure Function app in the cloud. The first time you do this, download the publish profile for your Azure Function App and import it in the Publish wizard.
 
 # Using
 
