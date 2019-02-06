@@ -1,0 +1,6 @@
+{
+  // Value indicating the timeout duration for all functions.
+  // In Dynamic SKUs, the valid range is from 1 second to 10 minutes and the default value is 5 minutes.
+  // In Paid SKUs there is no limit and the default value is null (indicating no timeout).
+  "functionTimeout": "00:10:00"
+}

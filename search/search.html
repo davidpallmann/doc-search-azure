@@ -1,0 +1,76 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Document Search</title>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"
+            integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+            crossorigin="anonymous"></script>
+</head>
+<body style="font-family: Calibri;Arial;Helevetica">
+    <div style="margin: 20px">
+        <div style="font-size: 40px; font-weight: bold; vertical-align: top"><img src="search-azurefunc-logo.png" style="height: 32px; vertical-align: middle" />&nbsp;Document Search</div>
+        <div style="font-size: 24px; font-weight: bold; vertical-align: top">Powered by Azure Functions and Cosmos DB</div>
+        <br/>
+        <div>
+            <input id="search-text" type="text" style="width: 350px; padding: 8px" placeholder="Enter a search term" />
+            <button style="background-color: #3899C6; color: white; padding: 10px; font-weight: bold" onclick="search()">Search</button>
+        </div>
+        <br/>
+        <div id="results">
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            $("#search-text").on("keyup", function (e) {
+                if (e.keyCode == 13) {
+                    search();
+                }
+            });
+        });
+
+        function search() {
+            var startTime, endTime;
+            startTime = startTime = new Date();
+
+            var query = $('#search-text').val().toLowerCase();
+
+            if (!query) return;
+
+            var url = "http://pallmann-search.azurewebsites.net/api/query?search=" + query;
+
+            $('#results').html('Searching...');
+
+            $.ajax({
+                type: 'GET',
+                url: url,
+                accepts: "text/xml",
+            }).success(function (data) {
+                endTime = new Date();
+                var timeDiff = endTime - startTime; //in ms
+                if (timeDiff > 0) {
+                    timeDiff /= 1000.0;
+                }
+                var seconds = timeDiff.toFixed(2);
+
+                var array = eval(data);
+                var html = '';
+                if (array != null && array.length > 0) {
+                    for (var i = 0; i < array.length; i++) {
+                        html = html + '<a href="http://pallmannsearch.blob.core.windows.net/docs/' + array[i] + '" target="_doc">' + array[i] + '</a><br/>';
+                    }
+                }
+                else {
+                    html = 'No matches<br/>';
+                }
+                html = html + '<br/>Search time: ' + seconds.toString() + ' seconds';
+                $('#results').html(html);
+            }).error(function (e) {
+                //console.log(e);
+            });
+        }
+    </script>
+</body>
+</html>
