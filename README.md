@@ -2,7 +2,7 @@
 Document Search Engine in Azure Functions and Cosmos DB
 doc-search-azure is a document search engine, written in C#/.NET, that utilizes Azure Functions and Cosmos DB.
 
-For an overview of this project, please refer to this blog post:
+For an overview of this project, please refer to this blog post:http://davidpallmann.blogspot.com/2019/02/a-document-search-engine-using-azure.html
 
 # Cloud Assets
 
