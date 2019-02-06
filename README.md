@@ -9,6 +9,7 @@ For an overview of this project, please refer to this blog post:http://davidpall
 In order to deploy this solution to the cloud, you will need to define the following:
 * Azure blob storage account, with a "docs" container for documents and a "site" container for a web site.
 * Azure Function App definition, with an index function (blob trigger) and a query function (HTTP trigger)
+* A CosmosDB database, with a DocCollection (partitioned on /Category) and a DocWordCollection (partitioned on /DocId)
 
 The solution files will need updating to refer to YOUR cloud assets.
 
@@ -17,7 +18,6 @@ The solution files will need updating to refer to YOUR cloud assets.
 To build doc-search-azure, you need:
 * Visual Studio 2017
 * An Azure account
-* A CosmosDB database, with a DocCollection (partitioned on /Category) and a DocWordCollection (partitioned on /DocId)
 
 Before building, update the local.settings.json file with your storage account settings.
 
