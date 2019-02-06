@@ -4,6 +4,8 @@ doc-search-azure is a document search engine, written in C#/.NET, that utilizes 
 
 For an overview of this project, please refer to this blog post:http://davidpallmann.blogspot.com/2019/02/a-document-search-engine-using-azure.html
 
+![doc-search-azure](https://pallmannsearch.blob.core.windows.net/site/search-azurefunc-logo.png)
+
 # Cloud Assets
 
 In order to deploy this solution to the cloud, you will need to define the following:
